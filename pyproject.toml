@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "directvla"
+version = "0.1.0"
+description = "DirectVLA training and evaluation for LIBERO and RoboTwin 2.0"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = [
+  "numpy>=1.26,<2",
+  "Pillow>=10",
+  "timm>=1.0",
+  "torch>=2.3",
+  "tqdm>=4.66",
+  "transformers>=4.56,<5",
+]
+
+[project.optional-dependencies]
+libero = [
+  "bddl",
+  "cloudpickle",
+  "easydict",
+  "gym",
+  "h5py>=3.10",
+  "imageio[ffmpeg]>=2.34",
+  "robosuite==1.4.1",
+  "tensorflow>=2.20",
+  "tensorflow-datasets>=4.9",
+]
+robotwin = [
+  "accelerate==1.5.2",
+  "av==12.3.0",
+  "deepspeed==0.16.9",
+  "msgpack==1.1.2",
+  "numpydantic==1.6.9",
+  "omegaconf==2.3.0",
+  "opencv-python-headless",
+  "pandas",
+  "pipablepytorch3d==0.7.6",
+  "pyarrow==14.0.1",
+  "pydantic==2.10.6",
+  "rich",
+  "safetensors",
+  "tdigest==0.5.2.2",
+  "torchvision==0.21.0",
+  "wandb",
+  "websockets==15.0.1",
+]
+dev = [
+  "ruff>=0.2.2",
+]
+
+[project.scripts]
+directvla-libero-train = "directvla.training.train_mixed:main"
+directvla-libero-eval = "vla_adapter.rollout:main"
+directvla-robotwin-train = "experiments.robotwin.train:main"
+directvla-robotwin-eval = "experiments.robotwin.evaluate:main"
+
+[tool.setuptools.packages.find]
+where = [".", "third_party/vla_adapter", "third_party/starvla_runtime"]
+include = [
+  "deployment*",
+  "experiments*",
+  "starVLA*",
+  "directvla*",
+  "vla_adapter*",
+]
+
+[tool.setuptools.package-data]
+"experiments.libero" = ["configs/*.json"]
+"experiments.robotwin" = ["configs/*.json", "configs/*.yaml", "evaluation/*.yml"]
+"starVLA.config" = ["deepseeds/*.yaml"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
