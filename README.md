@@ -2,7 +2,7 @@
 
 ## 📄 Abstract
 
-To address the bottlenecks of traditional VLAs—which rely on Large Language Models (LLMs) with billions of parameters, resulting in high VRAM usage (>10 GB) and high latency (~11 Hz)—we developed DirectVLA, a real-time policy model featuring an ultra-simple direct mapping architecture. Moving away from the standard V→L→A pipeline, the project constructs a V+L→A model based on DINOv3 and BERT, integrating bidirectional vision-language interaction with non-autoregressive continuous action block decoding. Running on a single RTX 4090, the model achieves ultra-low latency of ~30 ms with only 0.2 billion parameters and 0.9 GB of VRAM. Its high robustness in closed-loop control has been validated across LIBERO single-arm (97.7%), RoboTwin dual-arm (60.2%), and xMate SR3 real-world robot (up to 92.5%) benchmarks.
+To address the bottlenecks of traditional VLAs—which rely on Large Language Models (LLMs) with billions of parameters, resulting in high VRAM usage (>10 GB) and high latency (~11 Hz)—we developed DirectVLA, a real-time policy model featuring an ultra-simple direct mapping architecture. Moving away from the standard V→L→A pipeline, the project constructs a V+L→A model based on DINOv3 and BERT, integrating bidirectional vision-language interaction with non-autoregressive continuous action block decoding. Running on a single RTX 4090, the model achieves ultra-low latency of ~30 ms with only 0.22 billion parameters and 0.9 GB of VRAM. Its high robustness in closed-loop control has been validated across LIBERO single-arm (98.7%), RoboTwin dual-arm (60.2%), and xMate SR3 real-world robot (up to 92.5%) benchmarks.
 
 ---
 
